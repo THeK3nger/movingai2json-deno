@@ -1,11 +1,10 @@
-# movingai2json [![Build Status](https://travis-ci.org/THeK3nger/movingai2json.svg)](https://travis-ci.org/THeK3nger/movingai2json) [![npm](https://img.shields.io/npm/v/movingai2json.svg?maxAge=2592000)](https://www.npmjs.com/package/movingai2json) [![npm](https://img.shields.io/npm/dt/movingai2json.svg?maxAge=2592000)](https://www.npmjs.com/package/movingai2json)
+# movingai2json-deno
 
-**MovingAI2JSON** is a simple *JavaScript* library to parse [Moving AI][2]
-benchmark `.map` and `.scen` files into a JSON data structure.
+**MovingAI2JSON** is a simple _TypeScript_ library to parse [Moving AI][2]
+benchmark `.map` and `.scen` files into a JSON data structure for Deno.
 
 The library also provide simple tools to handle the resulting objects, such as
 computing tiles traversability and movement cost between adjacents tiles.
-
 
 ## Usage
 
@@ -17,7 +16,7 @@ The library is composed by two main functions: `parseMapString(string)` and `par
 
 The program can be run in the command line in order to automaitcally convert all files in the specified folder.
 
-    node movingai2json batch <folder_path>
+    deno run --unstable src/movingai2json.ts -batch <folder_path>
 
 This is useful to automatically convert a full benchmark database.
 
@@ -48,21 +47,17 @@ The scen output is a JSON data structure in this format:
       }
       ]
 
-## Dependencies
-
-The async package is required **only** for the CLI batch command. If you want to use this package as a library you can also avoid to use async.
-
 ## TODO:
 
 There is some additional features that can be implemented
 
- - [x] Parser for the .scen files.
- - [ ] Utility functions to handle standard common operation on the map (distances, cost, traversability and so on).
- - [x] CLI to batch several .map file into .json files.
+- [x] Parser for the .scen files.
+- [ ] Utility functions to handle standard common operation on the map (distances, cost, traversability and so on).
+- [x] CLI to batch several .map file into .json files.
 
 ## License
 
 The library is released under [the MIT license][1]
 
- [1]: LICENSE
- [2]: http://movingai.com/
+[1]: LICENSE
+[2]: http://movingai.com/
