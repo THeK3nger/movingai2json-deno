@@ -189,7 +189,7 @@ export async function parseAllInFolder(folder: string): Promise<void> {
 function printUsage() {
   console.log("Usage:");
   console.log(
-    "movingai2json -batch [folder] -- Convert all the .map file in the folder path."
+    "movingai2json -batch [folder] -- Convert all the .map file in the folder path.",
   );
 }
 
