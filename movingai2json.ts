@@ -1,8 +1,4 @@
-import {
-  readFileStr,
-  writeFileStr,
-  walk,
-} from "https://deno.land/std/fs/mod.ts";
+import { walk } from "https://deno.land/std/fs/mod.ts";
 
 const { args } = Deno;
 
@@ -126,9 +122,9 @@ export function parseScenString(scenString: string) {
  */
 export async function parseMapFile(filePath: string): Promise<void> {
   try {
-    const data = await readFileStr(filePath);
+    const data = await Deno.readTextFile(filePath);
     const outJSON = parseMapString(data.toString());
-    await writeFileStr(filePath + ".json", JSON.stringify(outJSON));
+    await Deno.writeTextFile(filePath + ".json", JSON.stringify(outJSON));
   } catch (err) {
     throw new Error(err);
   }
@@ -142,9 +138,9 @@ export async function parseMapFile(filePath: string): Promise<void> {
  */
 export async function parseScenFile(filePath: string): Promise<void> {
   try {
-    const data = await readFileStr(filePath);
+    const data = await Deno.readTextFile(filePath);
     const outJSON = parseScenString(data.toString());
-    await writeFileStr(filePath + ".json", JSON.stringify(outJSON));
+    await Deno.writeTextFile(filePath + ".json", JSON.stringify(outJSON));
   } catch (err) {
     throw new Error(err);
   }
@@ -189,7 +185,7 @@ export async function parseAllInFolder(folder: string): Promise<void> {
 function printUsage() {
   console.log("Usage:");
   console.log(
-    "movingai2json -batch [folder] -- Convert all the .map file in the folder path.",
+    "movingai2json -batch [folder] -- Convert all the .map file in the folder path."
   );
 }
 
